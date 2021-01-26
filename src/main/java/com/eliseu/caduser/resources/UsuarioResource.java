@@ -21,10 +21,7 @@ public class UsuarioResource {
 	public ResponseEntity<Usuario> buscar(@PathVariable Long usuarioId) {
 		Usuario usuario = usuarioService.findById(usuarioId);
 		
-		if(usuario != null) {
-			return ResponseEntity.ok(usuario);
-		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.ok().body(usuario);
 	}
 
 }
