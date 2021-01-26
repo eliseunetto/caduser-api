@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +33,13 @@ public class UsuarioResource {
 		Usuario usuario = usuarioService.findById(usuarioId);
 
 		return ResponseEntity.ok().body(usuario);
+	}
+	
+	@PutMapping(value = "/{usuarioId}")
+	public ResponseEntity<Usuario> atualizar(@PathVariable Long usuarioId, @RequestBody Usuario usuarioAtualizado) {
+		 Usuario usuario = usuarioService.update(usuarioId, usuarioAtualizado);
+		 
+		 return ResponseEntity.ok().body(usuario);
 	}
 
 }
