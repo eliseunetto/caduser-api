@@ -35,5 +35,10 @@ public class UsuarioService {
 		
 		return usuarioRepository.save(usuario);
 	}
+
+	public Usuario create(Usuario usuarioNovo) {
+		usuarioNovo.setId(null);
+		return usuarioRepository.save(usuarioNovo);
+	}
 	
 }
