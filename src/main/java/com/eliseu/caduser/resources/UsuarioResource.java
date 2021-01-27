@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,6 +55,12 @@ public class UsuarioResource {
 				.buildAndExpand(usuario.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@DeleteMapping(value = "/{usuarioId}")
+	public ResponseEntity<Usuario> apagar(@PathVariable Long usuarioId) {
+		usuarioService.delete(usuarioId);
+		return ResponseEntity.noContent().build();
 	}
 
 }
